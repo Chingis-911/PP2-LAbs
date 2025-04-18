@@ -51,7 +51,8 @@ while running:
   
   if event.type ==  pygame.KEYDOWN and event.key ==  pygame.K_RSHIFT:
      pygame.mixer.music.unpause()
-
+  #new variable,so if x = 1 and shift => pause
+  #if x = 2 and shift=> unpause
 
   if event.type ==  pygame.KEYDOWN and event.key ==  pygame.K_LSHIFT:
      pygame.mixer.music.pause()

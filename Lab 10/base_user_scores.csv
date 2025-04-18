@@ -1,0 +1,3 @@
+score_id,user_id,score,level,saved_state
+1,1,50,5,"L1-ok;L2-ok;L3-ok;L4-ok;L5-ok"
+2,2,30,3,"L1-ok;L2-ok;L3-ok"

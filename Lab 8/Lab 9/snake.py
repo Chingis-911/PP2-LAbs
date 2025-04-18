@@ -6,19 +6,20 @@ pygame.init()
 
 width, height = 600, 600
 CELL_SIZE = 10
-
+#colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 YELLOW = (255, 255, 0)
 PINK = (255, 0, 255)
-
+#screen settings
 DISPLAYSURF = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Snake")
 ICON = pygame.image.load("Images/snake.png")
 pygame.display.set_icon(ICON)
 
+#coordinates
 snake_pos = [100, 50]
 snake_body = [[100, 50], [90, 50], [80, 50]]
 
@@ -27,7 +28,7 @@ food_spawn = True
 
 banana_pos = [random.randrange(1, width // 10) * 10, random.randrange(1, height // 10) * 10]
 banana_spawn = True
-banana_timer = pygame.time.get_ticks()
+banana_timer = pygame.time.get_ticks() #timer for delay
 
 cherry_pos = [random.randrange(1, width // 10) * 10, random.randrange(1, height // 10) * 10]
 cherry_spawn = True
@@ -49,8 +50,8 @@ def handle_events():
     global change_to, direction
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            pygame.quit()
-        elif event.type == pygame.KEYDOWN:
+            pygame.quit()   #Like if it goes down it can not suddenlyu go to up
+        elif event.type == pygame.KEYDOWN:  
             if event.key == pygame.K_UP and direction != "DOWN":
                 change_to = "UP"
             elif event.key == pygame.K_DOWN and direction != "UP":
@@ -74,9 +75,9 @@ def move_snake():
     elif direction == "RIGHT":
         snake_pos[0] += CELL_SIZE
 
-    snake_body.insert(0, list(snake_pos))
+    snake_body.insert(0, list(snake_pos)) #dynamically changing the coordinates of snake
 
-    global SCORE  #if we got certain fruit then 
+    global SCORE  #if we got certain fruit then Score rise
     if snake_pos == food_pos:
         food_spawn = False
         SCORE += 1
@@ -102,7 +103,7 @@ def move_snake():
         cherry_pos[:] = [random.randrange(1, width // 10) * 10, random.randrange(1, height // 10) * 10]
         cherry_timer = pygame.time.get_ticks()
         cherry_spawn = True
-
+#Level increasing
 def show_lev():
     global SCORE, speed, LEVEL
     LEVEL = int(SCORE / 4)
